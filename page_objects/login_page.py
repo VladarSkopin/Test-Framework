@@ -18,20 +18,23 @@ class LoginPage:
         self.wait: WebDriverWait = WebDriverWait(self.driver, 10, 0.4)
 
     def type_in_email(self, email: str) -> None:
+        """This function will find the email box WebElement and fill in the email info"""
         header_element: WebElement = self.wait.until(ExCon.presence_of_element_located((By.XPATH, self.xpath_header)), 'header element')
-        header_element.click()
+        header_element.click()  # to move the mouse cursor out of the input box
         email_box: WebElement = self.wait.until(ExCon.visibility_of_element_located((By.CSS_SELECTOR, self.css_email_input)),
                                                 'email box')
         email_box.clear()
         email_box.send_keys(email)
 
     def type_in_password(self, password: str) -> None:
+        """This function will find the password box WebElement and fill in the password info"""
         password_box: WebElement = self.wait.until(
             ExCon.presence_of_element_located((By.CSS_SELECTOR, self.css_password_input)), 'password box')
         password_box.clear()
         password_box.send_keys(password)
 
     def click_login_button(self) -> None:
+        """This function will find  """
         login_btn: WebElement = self.wait.until(ExCon.presence_of_element_located((By.CSS_SELECTOR, self.css_login_btn)),
                                                 'login button')
         login_btn.click()

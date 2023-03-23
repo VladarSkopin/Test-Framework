@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.firefox.webdriver import WebDriver
 
 from page_objects.login_page import LoginPage
@@ -19,7 +17,6 @@ class TestLoginPage:
         self.driver: WebDriver = setup
         self.driver.get(base_url)
         self.login_page = LoginPage(driver=self.driver)
-        # time.sleep(5)
         self.login_page.type_in_email(email=email_data)
         self.login_page.type_in_password(password=password_data)
         self.login_page.click_login_button()
