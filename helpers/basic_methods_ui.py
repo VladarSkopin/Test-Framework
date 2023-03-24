@@ -126,7 +126,8 @@ class BasicMethods:
         self.url_contains(url)
         return self
 
-    def accept_alert(self, driver: Optional[WebDriver | WebElement] = None, message: Optional[str | Any] = None, waiting_time: int = 10) -> None:
+    def accept_alert(self, driver: Optional[WebDriver | WebElement] = None, message: Optional[str | Any] = None,
+                     waiting_time: int = 10) -> None:
         """Function accepts the alert window"""
         driver = self.driver if not driver else driver
         message = 'No alert window was found' if not message else message
