@@ -1,4 +1,5 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from logging import Logger
 
 from helpers.config_reader import ConfigReader
 from helpers.custom_logger import CustomLogger
@@ -6,11 +7,11 @@ from page_objects.login_page import LoginPage
 
 
 class TestLoginPage:
-    logger = CustomLogger.get_logger()
+    logger: Logger = CustomLogger.get_logger()
 
-    base_url = ConfigReader.get_url()
-    email_data = ConfigReader.get_email()
-    password_data = ConfigReader.get_password()
+    base_url: str = ConfigReader.get_url()
+    email_data: str = ConfigReader.get_email()
+    password_data: str = ConfigReader.get_password()
 
     def test_homepage_title(self, setup):
         self.logger.info("***** TestLoginPage *****")

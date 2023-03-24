@@ -19,7 +19,7 @@ class LoginPage:
             EC.presence_of_element_located((By.XPATH, LoginPageLocators.xpath_header.value)), 'header element')
         header_element.click()  # to move the mouse cursor out of the input box
         email_box: WebElement = self.wait.until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, LoginPageLocators.css_email_input.value)),
+            EC.presence_of_element_located((By.CSS_SELECTOR, LoginPageLocators.css_email_input.value)),
             'email box')
         email_box.clear()
         email_box.send_keys(email)
