@@ -33,8 +33,25 @@ class LoginPage:
         password_box.send_keys(password)
 
     def click_login_button(self) -> None:
-        """This function will find  """
+        """This function will find login button and click on it"""
         login_btn: WebElement = self.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, LoginPageLocators.css_login_btn.value)),
             'login button')
         login_btn.click()
+
+    def click_logout_button(self) -> None:
+        """This function will find logout button and click on it"""
+        logout_btn: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, LoginPageLocators.css_logout_btn)),
+            'logout button')
+        logout_btn.click()
+
+    def alert_accept(self) -> None:
+        """This function switches the driver to alert window and accepts it"""
+        alert_window = self.driver.switch_to.alert
+        alert_window.accept()
+
+    def alert_dismiss(self) -> None:
+        """This function switches the driver to alert window and dismisses it"""
+        alert_window = self.driver.switch_to.alert
+        alert_window.dismiss()
