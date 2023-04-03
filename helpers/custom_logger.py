@@ -5,7 +5,7 @@ from logging import Logger
 class CustomLogger:
 
     @staticmethod
-    def get_logger():
+    def get_logger() -> Logger:
         for handler in logging.root.handlers[:]:
             logging.root.removeHandler(handler)
 

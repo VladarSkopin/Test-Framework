@@ -15,5 +15,6 @@ class LoginPageLocators(BaseEnum):
     css_password_input = 'input[class="password"]'
     css_checkbox = 'input[type="checkbox"]'
     css_login_btn = 'button'
+    css_logout_btn = "a[href$='logout']"
     xpath_logout_btn = "//a[text()='Logout']"
     xpath_header = '//h1'
