@@ -42,7 +42,7 @@ class LoginPage:
     def click_logout_button(self) -> None:
         """This function will find logout button and click on it"""
         logout_btn: WebElement = self.wait.until(
-            EC.presence_of_element_located((By.XPATH, LoginPageLocators.css_logout_btn)),
+            EC.presence_of_element_located((By.XPATH, "//a[text()='Logout']")),
             'logout button')
         logout_btn.click()
 

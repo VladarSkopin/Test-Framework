@@ -10,7 +10,7 @@ from page_objects.login_page import LoginPage
 
 
 class TestLoginPage:
-    logger: Logger = CustomLogger.get_logger()
+    # logger: Logger = CustomLogger.get_logger()
 
     base_url: str = ConfigReader.get_url()
     email_data: str = ConfigReader.get_email()
@@ -18,24 +18,24 @@ class TestLoginPage:
 
     @pytest.mark.smoke
     @pytest.mark.ui
-    def test_homepage_title(self, setup):
-        self.logger.info("***** TestLoginPage *****")
-        self.logger.info(f"***** test_homepage_title *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+    def test_homepage_title(self, setup, logger):
+        logger.info("***** TestLoginPage *****")
+        logger.info(f"***** test_homepage_title *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         self.driver: WebDriver = setup
-        self.logger.info(f'BASE URL: {self.base_url}')
+        logger.info(f'BASE URL: {self.base_url} \n')
         self.driver.get(self.base_url)
         assert self.driver.title == 'Your store. Login', 'title does not match "Your store. Login"'
         self.driver.save_screenshot('screenshots/login_page.png')
 
     @pytest.mark.smoke
     @pytest.mark.ui
-    def test_login(self, setup):
-        self.logger.info("***** TestLoginPage *****")
-        self.logger.info(f"***** test_login *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+    def test_login(self, setup, logger):
+        logger.info("***** TestLoginPage *****")
+        logger.info(f"***** test_login *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         self.driver: WebDriver = setup
-        self.logger.info(f'BASE URL: {self.base_url}')
-        self.logger.info(f'EMAIL DATA: {self.email_data}')
-        self.logger.info(f'PASSWORD DATA: {self.password_data}')
+        logger.info(f'BASE URL: {self.base_url}')
+        logger.info(f'EMAIL DATA: {self.email_data}')
+        logger.info(f'PASSWORD DATA: {self.password_data} \n')
         self.driver.get(self.base_url)
         self.login_page = LoginPage(driver=self.driver)
         self.login_page.type_in_email(email=self.email_data)
