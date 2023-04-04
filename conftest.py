@@ -1,4 +1,7 @@
+import logging
 import pytest
+from logging import Logger
+from _pytest.fixtures import FixtureRequest
 from selenium import webdriver
 
 
@@ -25,6 +28,21 @@ def pytest_addoption(parser):  # This will get the value from CLI / hooks
 def browser(request):  # This will return the Browser value to the "setup" method
     return request.config.getoption('--browser')
 
+
+@pytest.fixture(scope="session")
+def logger(request: FixtureRequest) -> Logger:
+    logger: Logger = logging.getLogger('alex_logger')
+    formatter = logging.Formatter("{asctime} {levelname} {name} {message}", style='{')
+    if logger.hasHandlers():
+        logger.handlers.clear()
+    handler = logging.StreamHandler()
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    levels = {"debug": logging.DEBUG, "info": logging.INFO, "warning": logging.WARNING, "critical": logging.CRITICAL}
+    # level = levels.get(request.config.getoption("--loglevel").lower())
+    level = levels.get("info")
+    logger.setLevel(level)
+    return logger
 
 '''
 def pytest_configure(config):

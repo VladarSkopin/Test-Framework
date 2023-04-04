@@ -11,17 +11,17 @@ from page_objects.login_page import LoginPage
 
 
 class TestLoginPage:
-    logger: Logger = CustomLogger.get_logger()
+    # logger: Logger = CustomLogger.get_logger()
     excel_file_path: str = './/test_data/logins.xlsx'
     base_url: str = ConfigReader.get_url()
 
     @pytest.mark.regression
     @pytest.mark.ddt
-    def test_login(self, setup):
-        self.logger.info("***** Test Login from Excel file*****")
-        self.logger.info(f"***** test_login *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+    def test_login(self, setup, logger):
+        logger.info("***** Test Login from Excel file*****")
+        logger.info(f"***** test_login *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         self.driver: WebDriver = setup
-        self.logger.info(f'BASE URL: {self.base_url}')
+        logger.info(f'BASE URL: {self.base_url}')
         self.driver.get(self.base_url)
         self.login_page = LoginPage(driver=self.driver)
         rows: int = excel_utils.get_max_row(self.excel_file_path, 'Sheet1')
@@ -41,20 +41,20 @@ class TestLoginPage:
 
             if actual_title == expected_title:
                 if expected_result == 'Pass':
-                    self.logger.info(f"passed: {email_data}")
+                    logger.info(f"passed: {email_data}")
                     self.login_page.click_logout_button()
                     status_list.append("Pass")
                 elif expected_result == 'Fail':
-                    self.logger.info(f"failed: {email_data}")
+                    logger.info(f"failed: {email_data}")
                     self.login_page.click_logout_button()
                     status_list.append("Fail")
 
             elif actual_title != expected_title:
                 if expected_result == 'Pass':
-                    self.logger.info(f"failed: {email_data}")
+                    logger.info(f"failed: {email_data}")
                     status_list.append("Fail")
                 elif expected_result == 'Fail':
-                    self.logger.info(f"passed: {email_data}")
+                    logger.info(f"passed: {email_data}")
                     status_list.append("Pass")
 
         assert "Fail" not in status_list
