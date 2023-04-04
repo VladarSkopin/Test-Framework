@@ -15,6 +15,19 @@ class LoginPageLocators(BaseEnum):
     css_password_input = 'input[class="password"]'
     css_checkbox = 'input[type="checkbox"]'
     css_login_btn = 'button'
+    xpath_header = '//h1'
+
+
+@unique
+class HomePageLocators(BaseEnum):
+    """Locators for HomePage"""
     css_logout_btn = "a[href$='logout']"
     xpath_logout_btn = "//a[text()='Logout']"
-    xpath_header = '//h1'
+    xpath_tab_customers = "//a//p[contains(text(), 'Customers')][1]"
+    xpath_tab_promotions = "//a//p[contains(text(), 'Promotions')]"
+    xpath_tab_content_management = "//a//p[contains(text(), 'Content')]"
+    xpath_tab_configuration = "//a//p[contains(text(), 'Config')]"
+    xpath_tab_system = "//a//p[contains(text(), 'System')][1]"
+    xpath_tab_reports = "//a//p[contains(text(), 'Reports')]"
+    xpath_tab_help = "//a//p[contains(text(), 'Help')]"
+

@@ -4,7 +4,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from basic_enums import LoginPageLocators
+from basic_enums import LoginPageLocators, HomePageLocators
 
 
 class LoginPage:
@@ -41,6 +41,7 @@ class LoginPage:
 
     def click_logout_button(self) -> None:
         """This function will find logout button and click on it"""
+        # HomePageLocators.xpath_logout_btn leads to "TypeError: ... is not JSON serializable"
         logout_btn: WebElement = self.wait.until(
             EC.presence_of_element_located((By.XPATH, "//a[text()='Logout']")),
             'logout button')
