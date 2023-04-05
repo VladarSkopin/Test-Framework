@@ -15,7 +15,6 @@ def setup(browser):
         driver = webdriver.Edge()
     else:
         driver = webdriver.Chrome()  # Chrome is the default browser
-    # return driver
     yield driver
     driver.close()
 
@@ -49,19 +48,3 @@ def logger(request: FixtureRequest) -> Logger:
     level: int = levels.get("debug") if level_option is None else levels.get(request.config.getoption("--loglevel").lower())
     logger.setLevel(level)
     return logger
-
-
-'''
-def pytest_configure(config):
-    """The hook for adding environment info to HTML report"""
-    config._metadata['Project Name'] = 'nop Commerce'
-    config._metadata['Module Name'] = 'Customers'
-    config._metadata['Tester'] = 'Alex'
-
-
-@pytest.mark.optionalhook
-def pytest_metadata(metadata):
-    """The hook for deleting / modifying environment info for HTML report"""
-    metadata.pop("JAVA_HOME", None)
-    metadata.pop("Plugins", None)
-'''
