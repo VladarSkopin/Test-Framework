@@ -39,14 +39,6 @@ class LoginPage:
             'login button')
         login_btn.click()
 
-    def click_logout_button(self) -> None:
-        """This function will find logout button and click on it"""
-        # HomePageLocators.xpath_logout_btn leads to "TypeError: ... is not JSON serializable"
-        logout_btn: WebElement = self.wait.until(
-            EC.presence_of_element_located((By.XPATH, "//a[text()='Logout']")),
-            'logout button')
-        logout_btn.click()
-
     def alert_accept(self) -> None:
         """This function switches the driver to alert window and accepts it"""
         alert_window = self.driver.switch_to.alert

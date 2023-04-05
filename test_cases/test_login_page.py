@@ -1,11 +1,9 @@
 from datetime import datetime
-
 import pytest
 from selenium.webdriver.firefox.webdriver import WebDriver
-from logging import Logger
 
 from helpers.config_reader import ConfigReader
-from helpers.custom_logger import CustomLogger
+from page_objects.home_page import HomePage
 from page_objects.login_page import LoginPage
 
 
@@ -19,29 +17,28 @@ class TestLoginPage:
     @pytest.mark.smoke
     @pytest.mark.ui
     def test_homepage_title(self, setup, logger):
-        logger.info("***** TestLoginPage *****")
         logger.info(f"***** test_homepage_title *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
-        self.driver: WebDriver = setup
+        driver: WebDriver = setup
         logger.info(f'BASE URL: {self.base_url} \n')
-        self.driver.get(self.base_url)
-        assert self.driver.title == 'Your store. Login', 'title does not match "Your store. Login"'
-        self.driver.save_screenshot('screenshots/login_page.png')
+        driver.get(self.base_url)
+        assert driver.title == 'Your store. Login', 'title does not match "Your store. Login"'
+        driver.save_screenshot('screenshots/login_page.png')
 
     @pytest.mark.smoke
     @pytest.mark.ui
     def test_login(self, setup, logger):
-        logger.info("***** TestLoginPage *****")
         logger.info(f"***** test_login *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
-        self.driver: WebDriver = setup
+        driver: WebDriver = setup
         logger.info(f'BASE URL: {self.base_url}')
         logger.info(f'EMAIL DATA: {self.email_data}')
         logger.info(f'PASSWORD DATA: {self.password_data} \n')
-        self.driver.get(self.base_url)
-        self.login_page = LoginPage(driver=self.driver)
-        self.login_page.type_in_email(email=self.email_data)
-        self.login_page.type_in_password(password=self.password_data)
-        self.login_page.click_login_button()
-        assert self.driver.title == 'Dashboard / nopCommerce administration',\
+        driver.get(self.base_url)
+        login_page = LoginPage(driver=driver)
+        login_page.type_in_email(email=self.email_data)
+        login_page.type_in_password(password=self.password_data)
+        login_page.click_login_button()
+        home_page = HomePage(driver=driver)
+        assert driver.title == 'Dashboard / nopCommerce administration',\
             'title does not match "Dashboard / nopCommerce administration"'
-        self.driver.save_screenshot('screenshots/dashboard_page.png')
-        self.login_page.click_logout_button()
+        driver.save_screenshot('screenshots/dashboard_page.png')
+        home_page.click_logout_button()
