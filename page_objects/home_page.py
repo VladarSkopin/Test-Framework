@@ -21,6 +21,76 @@ class HomePage:
             'logout button')
         logout_btn.click()
 
+    def click_dashboard_tab(self) -> None:
+        """This function will find the Dashboard tab and click on it"""
+        dashboard_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_dashboard)),
+            'dashboard tab')
+        dashboard_tab.click()
+
+    def click_catalog_tab(self) -> None:
+        """This function will find the Catalog tab and click on it"""
+        catalog_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_catalog)),
+            'catalog tab')
+        catalog_tab.click()
+
+    def click_sales_tab(self) -> None:
+        """This function will find the Sales tab and click on it"""
+        sales_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_sales)),
+            'sales tab')
+        sales_tab.click()
+
+    def click_customers_tab(self) -> None:
+        """This function will find the Customers tab and click on it"""
+        customers_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_customers)),
+            'customers tab')
+        customers_tab.click()
+
+    def click_promotions_tab(self) -> None:
+        """This function will find the Promotions tab and click on it"""
+        promotions_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_promotions)),
+            'promotions tab')
+        promotions_tab.click()
+
+    def click_content_management_tab(self) -> None:
+        """This function will find the Content Management tab and click on it"""
+        content_management_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_content_management)),
+            'content management tab')
+        content_management_tab.click()
+
+    def click_configuration_tab(self) -> None:
+        """This function will find the Configuration tab and click on it"""
+        configuration_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_configuration)),
+            'configuration tab')
+        configuration_tab.click()
+
+    def click_system_tab(self) -> None:
+        """This function will find the System tab and click on it"""
+        system_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_system)),
+            'system tab')
+        system_tab.click()
+
+    def click_reports_tab(self) -> None:
+        """This function will find the Reports tab and click on it"""
+        reports_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_reports)),
+            'reports tab')
+        reports_tab.click()
+
+    def click_help_tab(self) -> None:
+        """This function will find the Help tab and click on it"""
+        help_tab: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, HomePageLocators.xpath_tab_help)),
+            'system tab')
+        help_tab.click()
+
     def alert_accept(self) -> None:
         """This function switches the driver to alert window and accepts it"""
         alert_window = self.driver.switch_to.alert
