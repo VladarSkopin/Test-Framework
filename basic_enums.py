@@ -35,3 +35,23 @@ class HomePageLocators(BaseEnum):
     xpath_tab_help = "//a//p[contains(text(), 'Help')]"
     xpath_option_customers = "//li[@class='nav-item']//a//p[contains(text(), 'Customers')]"
 
+
+@unique
+class CustomerInfoWindow(BaseEnum):
+    """Locators for Customer info"""
+    xpath_email_input = ""
+    xpath_password_input = ""
+    xpath_first_name_input = ""
+    xpath_last_name_input = ""
+    xpath_gender_male_radio_btn = ""
+    xpath_gender_female_radio_btn = ""
+    xpath_birth_date_input = ""
+    xpath_company_name_input = ""
+    xpath_is_tax_exempt_checkbox = ""
+    xpath_newsletter_input = ""
+    xpath_customer_roles_input = ""
+    xpath_manager_of_vendor_input = ""
+    xpath_active_checkbox = ""
+    xpath_admin_comment_input = ""
+    xpath_save_btn = ""
+    xpath_save_and_continue_btn = ""

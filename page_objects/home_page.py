@@ -99,6 +99,13 @@ class HomePage:
             'system tab')
         customers_option.click()
 
+    def click_add_customer_button(self) -> None:
+        """This function will find the button to add new customers and click on it"""
+        add_customer_btn: WebElement = self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="btn btn-primary"]')),
+            'system tab')
+        add_customer_btn.click()
+
     def alert_accept(self) -> None:
         """This function switches the driver to alert window and accepts it"""
         alert_window = self.driver.switch_to.alert
