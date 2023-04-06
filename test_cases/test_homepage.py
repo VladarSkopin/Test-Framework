@@ -97,6 +97,8 @@ class TestHomepage:
         home_page.click_customers_tab()
         logger.info(f'clicking on "Customers" option...')
         home_page.click_customers_option()
+        logger.info(f'clicking on "Add new" button...')
+        home_page.click_add_customer_button()
         time.sleep(1)  # time to take screenshot of the new frame
         driver.save_screenshot('screenshots/home_page_customers_option.png')
 
