@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 import pytest
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from helpers.config_reader import ConfigReader
 from page_objects.home_page import HomePage
@@ -14,7 +14,7 @@ class TestHomepage:
     email_data: str = ConfigReader.get_email()
     password_data: str = ConfigReader.get_password()
 
-    @pytest.mark.regression
+    @pytest.mark.smoke
     @pytest.mark.ui
     def test_homepage_tabs(self, setup, logger):
         logger.info(f"***** test_homepage_tabs *****     {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
@@ -97,8 +97,6 @@ class TestHomepage:
         home_page.click_customers_tab()
         logger.info(f'clicking on "Customers" option...')
         home_page.click_customers_option()
-        logger.info(f'clicking on "Add new" button...')
         home_page.click_add_customer_button()
-        time.sleep(1)  # time to take screenshot of the new frame
-        driver.save_screenshot('screenshots/home_page_customers_option.png')
+
 

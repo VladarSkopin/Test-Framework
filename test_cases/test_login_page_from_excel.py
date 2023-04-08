@@ -1,6 +1,6 @@
 from datetime import datetime
 import pytest
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from helpers import excel_utils
 from helpers.config_reader import ConfigReader
