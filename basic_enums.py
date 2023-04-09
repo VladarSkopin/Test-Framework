@@ -42,20 +42,20 @@ class HomePageLocators(BaseEnum):
 @unique
 class AddCustomerFormLocators(BaseEnum):
     """Locators for Customer info"""
-    css_save_btn = "button[name='save']"
-    css_save_and_continue_btn = "button[name='save-continue']"
-    xpath_email_input = "//input[@type='email']"
-    xpath_password_input = "//input[@type='password']"
-    xpath_first_name_input = "//input[@id='FirstName']"
-    xpath_last_name_input = "//input[@id='LastName']"
-    xpath_gender_male_radio_btn = "//input[@id='Gender_Male']"
-    xpath_gender_female_radio_btn = "//input[@id='Gender_Female']"
-    xpath_birth_date_input = "//input[@name='DateOfBirth']"
-    xpath_company_name_input = "//input[@name='Company']"
-    xpath_is_tax_exempt_checkbox = "//input[@name='IsTaxExempt']"
-    xpath_newsletter_dropdown = "//div[@role='listbox']//input[@class='k-input k-readonly']"
-    xpath_customer_roles_dropdown = "//div[@role='listbox']//input[@class='k-input']"
-    xpath_manager_of_vendor_dropdown = "//select[@name='VendorId']"
-    xpath_active_checkbox = "//input[@name='Active']"
-    xpath_admin_comment_input = "//textarea"
+    css_save_btn = (By.CSS_SELECTOR, "button[name='save']")
+    css_save_and_continue_btn = (By.CSS_SELECTOR, "button[name='save-continue']")
+    xpath_email_input = (By.XPATH, "//input[@type='email']")
+    xpath_password_input = (By.XPATH, "//input[@type='password']")
+    xpath_first_name_input = (By.XPATH, "//input[@id='FirstName']")
+    xpath_last_name_input = (By.XPATH, "//input[@id='LastName']")
+    xpath_gender_male_radio_btn = (By.XPATH, "//input[@id='Gender_Male']")
+    xpath_gender_female_radio_btn = (By.XPATH, "//input[@id='Gender_Female']")
+    xpath_birth_date_input = (By.XPATH, "//input[@name='DateOfBirth']")
+    xpath_company_name_input = (By.XPATH, "//input[@name='Company']")
+    xpath_is_tax_exempt_checkbox = (By.XPATH, "//input[@name='IsTaxExempt']")
+    xpath_newsletter_dropdown = (By.XPATH, "//div[@role='listbox']//input[@class='k-input k-readonly']")
+    xpath_customer_roles_dropdown = (By.XPATH, "//div[@role='listbox']//input[@class='k-input']")
+    xpath_manager_of_vendor_dropdown = (By.XPATH, "//select[@name='VendorId']")
+    xpath_active_checkbox = (By.XPATH, "//input[@name='Active']")
+    xpath_admin_comment_input = (By.XPATH, "//textarea")
 

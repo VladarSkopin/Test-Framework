@@ -4,6 +4,7 @@ import pytest
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from helpers.config_reader import ConfigReader
+from page_objects.add_new_customer_form import AddNewCustomerForm
 from page_objects.home_page import HomePage
 from page_objects.login_page import LoginPage
 
@@ -13,6 +14,15 @@ class TestHomepage:
     base_url: str = ConfigReader.get_url()
     email_data: str = ConfigReader.get_email()
     password_data: str = ConfigReader.get_password()
+    first_name_data: str = ConfigReader.get_first_name()
+    last_name_data: str = ConfigReader.get_last_name()
+    birth_date_data: str = ConfigReader.get_birth_date()  # MM/DD/YYYY
+    company_name_data: str = ConfigReader.get_company_name()
+    newsletter_option_data: str = ConfigReader.get_newsletter_option()
+    customer_role_select_option_data: str = ConfigReader.get_customer_role_option()
+    manager_of_vendor_select_option_data: str = ConfigReader.get_manager_of_vendor_option()
+    admin_comment_data: str = ConfigReader.get_admin_comment()
+
 
     @pytest.mark.smoke
     @pytest.mark.ui
@@ -98,5 +108,20 @@ class TestHomepage:
         logger.info(f'clicking on "Customers" option...')
         home_page.click_customers_option()
         home_page.click_add_customer_button()
-
-
+        add_new_customer_form = AddNewCustomerForm(driver=driver)
+        add_new_customer_form.type_in_email(email=self.email_data)
+        add_new_customer_form.type_in_password(password=self.password_data)
+        add_new_customer_form.type_in_first_name(first_name=self.first_name_data)
+        add_new_customer_form.type_in_last_name(last_name=self.last_name_data)
+        add_new_customer_form.click_gender_female_radio_btn()
+        add_new_customer_form.type_in_date_of_birth(date_of_birth=self.birth_date_data)
+        add_new_customer_form.type_in_company_name(company_name=self.company_name_data)
+        add_new_customer_form.click_is_tax_exempt_checkbox()
+        add_new_customer_form.select_newsletter_dropdown(select_option=self.newsletter_option_data)
+        add_new_customer_form.select_customer_roles_dropdown(select_option=self.customer_role_select_option_data)
+        add_new_customer_form.select_manager_of_vendor_dropdown(select_option=self.manager_of_vendor_select_option_data)
+        add_new_customer_form.click_active_checkbox()
+        add_new_customer_form.type_in_admin_comment(admin_comment=self.admin_comment_data)
+        driver.save_screenshot('screenshots/home_page_add_new_customer_form.png')
+        add_new_customer_form.click_save_btn()
+        home_page.click_logout_button()
